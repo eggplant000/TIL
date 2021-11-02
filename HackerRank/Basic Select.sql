@@ -1,43 +1,97 @@
 -- Revising the Select Query I
-select * from CITY
-    where population > 100000 and countrycode = 'USA';
+SELECT * FROM CITY
+    WHERE population > 100000 and countrycode = 'USA';
+
 
 -- Revising the Select Query II
-select name from  CITY
-    where population > 120000 and countrycode = 'USA';
+SELECT name FROM  CITY
+    WHERE population > 120000 and countrycode = 'USA';
+
 
 -- Select All
-select * from CITY;
+SELECT * FROM CITY;
+
 
 -- Select By ID
-select * from CITY
-    where ID = 1661;
+SELECT * FROM CITY
+    WHERE ID = 1661;
+
 
 -- Japanese Cities' Attributes
-select * from CITY
-    where countrycode = 'JPN';
+SELECT * FROM CITY
+    WHERE countrycode = 'JPN';
+
 
 -- Japanese Cities' Names
-select NAME from CITY
-    where COUNTRYCODE = 'JPN';
+SELECT NAME FROM CITY
+    WHERE COUNTRYCODE = 'JPN';
+
 
 -- Weather Observation Station 1
-select CITY, STATE from STATION;
+SELECT CITY, STATE FROM STATION;
+
 
 -- Weather Observation Station 3
-select distinct CITY from STATION
-    where ID % 2 = 0;
+SELECT distinct CITY FROM STATION
+    WHERE ID % 2 = 0;
+
 
 -- Weather Observation Station 5
-SELECT city, length(city) AS LengthOfCity 
+SELECT city, LENGTH(city) AS LengthOfCity 
 FROM station 
-WHERE length(city) = (select min(length(city)) from station)
+WHERE LENGTH(city) = (SELECT min(LENGTH(city)) FROM station)
 ORDER BY city
 LIMIT 1;
 
-SELECT city, length(city) AS LengthOfCity 
+SELECT city, LENGTH(city) AS LengthOfCity 
 FROM station 
-WHERE length(city) = (select max(length(city)) from station)
+WHERE LENGTH(city) = (SELECT max(LENGTH(city)) FROM station)
 ORDER BY city
 LIMIT 1;
 
+
+-- Weather Observation Station 6 (MySQL, MS SQL Server)
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '^[aeiou]'
+
+SELECT DISTINCT city FROM station
+    WHERE city LIKE '[aeiou]%';
+
+
+-- Weather Observation Station 7 (MySQL, MS SQL Server)
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '[aeiou]$'
+
+SELECT DISTINCT city FROM station 
+    WHERE city LIKE '%[aeiou]'
+
+
+-- Weather Observation Station 8 (MySQL, MS SQL Server)
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '^[aeiou]' and city RLIKE '[aeiou]$'
+
+SELECT DISTINCT city FROM station 
+    WHERE city LIKE '[aeiou]%[aeiou]'
+
+
+-- Weather Observation Station 9
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '^[^aeiou]'
+
+
+-- Weather Observation Station 10
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '[^aeiou]$'
+
+
+-- Weather Observation Station 10
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '^[^aeiou]' OR city RLIKE '[^aeiou]$'
+
+
+-- Weather Observation Station 12
+SELECT DISTINCT city FROM station 
+    WHERE city RLIKE '^[^aeiou]' AND city RLIKE '[^aeiou]$'
+
+
+-- 
