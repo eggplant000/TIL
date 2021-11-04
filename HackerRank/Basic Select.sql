@@ -60,38 +60,52 @@ SELECT DISTINCT city FROM station
 
 -- Weather Observation Station 7 (MySQL, MS SQL Server)
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '[aeiou]$'
+    WHERE city RLIKE '[aeiou]$';
 
 SELECT DISTINCT city FROM station 
-    WHERE city LIKE '%[aeiou]'
+    WHERE city LIKE '%[aeiou]';
 
 
 -- Weather Observation Station 8 (MySQL, MS SQL Server)
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '^[aeiou]' and city RLIKE '[aeiou]$'
+    WHERE city RLIKE '^[aeiou]' and city RLIKE '[aeiou]$';
 
 SELECT DISTINCT city FROM station 
-    WHERE city LIKE '[aeiou]%[aeiou]'
+    WHERE city LIKE '[aeiou]%[aeiou]';
 
 
 -- Weather Observation Station 9
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '^[^aeiou]'
+    WHERE city RLIKE '^[^aeiou]';
 
 
 -- Weather Observation Station 10
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '[^aeiou]$'
+    WHERE city RLIKE '[^aeiou]$';
 
 
 -- Weather Observation Station 10
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '^[^aeiou]' OR city RLIKE '[^aeiou]$'
+    WHERE city RLIKE '^[^aeiou]' OR city RLIKE '[^aeiou]$';
 
 
 -- Weather Observation Station 12
 SELECT DISTINCT city FROM station 
-    WHERE city RLIKE '^[^aeiou]' AND city RLIKE '[^aeiou]$'
+    WHERE city RLIKE '^[^aeiou]' AND city RLIKE '[^aeiou]$';
 
 
--- 
+-- Higher Than 75 Marks
+SELECT name FROM students
+    WHERE marks > 75
+    ORDER BY RIGHT(name, 3) ASC, id ASC;
+
+
+-- Employee Names
+SELECT name FROM employee
+    ORDER BY name ASC;
+
+
+-- Employee Salaries
+SELECT name FROM employee
+    WHERE salary > 2000 AND months < 10
+    ORDER BY employee_id ASC;
