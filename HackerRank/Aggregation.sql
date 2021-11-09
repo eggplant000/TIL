@@ -32,4 +32,39 @@ SELECT months*salary, COUNT(*) FROM employee
 SELECT months*salary, COUNT(*) FROM employee
     GROUP BY months*salary
     ORDER BY months*salary DESC
-    LIMIT 1
+    LIMIT 1;
+
+
+-- Weather Observation Station 2
+SELECT ROUND(SUM(lat_n), 2), ROUND(SUM(long_w), 2) FROM station;
+
+
+-- Weather Observation Station 13
+SELECT TRUNCATE(SUM(lat_n), 4) FROM station
+    WHERE lat_n BETWEEN 38.7880 AND 137.2345;
+
+
+-- Weather Observation Station 14
+SELECT TRUNCATE(MAX(lat_n), 4) FROM station
+    WHERE lat_n < 137.2345;
+
+
+-- Weather Observation Station 15
+SELECT ROUND(long_w, 4) FROM station
+    WHERE lat_n = (SELECT MAX(lat_n) FROM station
+                    WHERE lat_n < 137.2345);
+
+
+-- Weather Observation Station 16
+SELECT ROUND(MIN(lat_n), 4) FROM station
+    WHERE lat_n > 38.7780;
+
+
+-- Weather Observation Station 17
+SELECT ROUND(long_w, 4) FROM station
+    WHERE lat_n = (SELECT MIN(lat_n) FROM station
+                    WHERE lat_n > 38.7780);
+
+
+-- 
+
