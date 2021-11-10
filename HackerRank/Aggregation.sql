@@ -66,5 +66,15 @@ SELECT ROUND(long_w, 4) FROM station
                     WHERE lat_n > 38.7780);
 
 
--- 
+-- Weather Observation Station 18
+SELECT ROUND(ABS(MIN(lat_n)-max(lat_n)) + ABS(MIN(long_w)-MAX(long_w)), 4) FROM station;
+
+
+-- Weather Observation Station 19
+SELECT ROUND(SQRT(POWER(MIN(lat_n)-MIN(long_w), 2) + POWER(MAX(lat_n)-MAX(long_w), 2)), 4) FROM station;
+
+
+-- Weather Observation Station 20
+SELECT ROUND(lat_n, 4) FROM (SELECT lat_n, PERCENT_RANK() over (ORDER BY lat_n) AS per FROM station) AS temp
+    WHERE per = 0.5;
 
