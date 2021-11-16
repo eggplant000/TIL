@@ -36,3 +36,14 @@ WHERE cnt > 1
 ORDER BY cnt DESC, id ASC;
 
 
+-- Contest Leaderboard
+SELECT Hackers.hacker_id, name, tot_score
+FROM Hackers
+INNER JOIN
+(SELECT hacker_id, SUM(max_score) tot_score
+FROM (SELECT hacker_id, MAX(score) max_score FROM Submissions
+GROUP BY hacker_id, challenge_id) t1
+GROUP BY hacker_id
+HAVING SUM(max_score) > 0) t2
+ON Hackers.hacker_id=t2.hacker_id
+ORDER BY tot_score DESC, hacker_id ASC
